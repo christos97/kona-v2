@@ -3,8 +3,8 @@
 Dep. Variable:                ln_pm25   R-squared:                     7.913e-07
 Estimator:                   PanelOLS   R-squared (Between):             -0.0024
 No. Observations:                 238   R-squared (Within):              -0.0002
-Date:                Mon, Nov 10 2025   R-squared (Overall):             -0.0019
-Time:                        00:58:09   Log-likelihood                    185.15
+Date:                Wed, Nov 12 2025   R-squared (Overall):             -0.0019
+Time:                        10:27:11   Log-likelihood                    185.15
 Cov. Estimator:             Clustered                                           
                                         F-statistic:                      0.0002
 Entities:                          30   P-value                           0.9901

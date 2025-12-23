@@ -3,8 +3,8 @@
 Dep. Variable:                ln_pm25   R-squared:                       0.034
 Model:                            OLS   Adj. R-squared:                  0.030
 Method:                 Least Squares   F-statistic:                     8.364
-Date:                Mon, 10 Nov 2025   Prob (F-statistic):            0.00419
-Time:                        00:58:08   Log-Likelihood:                -119.45
+Date:                Wed, 12 Nov 2025   Prob (F-statistic):            0.00419
+Time:                        10:27:11   Log-Likelihood:                -119.45
 No. Observations:                 238   AIC:                             242.9
 Df Residuals:                     236   BIC:                             249.8
 Df Model:                           1                                         

@@ -1,0 +1,172 @@
+🚀 Running Extended Environmental–Health Analysis Pipeline (Panel‑Friendly)…
+Log file: /home/xsrm/repos/kona-v2/output/run_log_20251112_093716.txt
+
+🗂 Loading & cleaning datasets…
+
+===================================================
+MODEL A: EEA Emissions → PM2.5 (panel)
+===================================================
+💾 Saved intermediate dataset → panel_a.csv (279 rows)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                ln_pm25   R-squared:                       0.002
+Model:                            OLS   Adj. R-squared:                 -0.002
+Method:                 Least Squares   F-statistic:                    0.4583
+Date:                Wed, 12 Nov 2025   Prob (F-statistic):              0.499
+Time:                        09:37:33   Log-Likelihood:                -146.76
+No. Observations:                 279   AIC:                             297.5
+Df Residuals:                     277   BIC:                             304.8
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+const                     2.3577      0.164     14.339      0.000       2.034       2.681
+ln_total_emissions_kt     0.0098      0.014      0.677      0.499      -0.019       0.038
+==============================================================================
+Omnibus:                       11.831   Durbin-Watson:                   0.540
+Prob(Omnibus):                  0.003   Jarque-Bera (JB):                7.656
+Skew:                          -0.262   Prob(JB):                       0.0218
+Kurtosis:                       2.380   Cond. No.                         76.6
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+===================================================
+MODEL B: PM2.5 → DALY (EEA) – PANEL
+===================================================
+💾 Saved intermediate dataset → health_b.csv (0 rows)
+[WARN] Not enough rows for Model B. Skipping fit.
+
+===================================================
+MODEL C: UNFCCC Emissions → PM2.5 (panel)
+===================================================
+💾 Saved intermediate dataset → panel_c.csv (238 rows)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                ln_pm25   R-squared:                       0.034
+Model:                            OLS   Adj. R-squared:                  0.030
+Method:                 Least Squares   F-statistic:                     8.364
+Date:                Wed, 12 Nov 2025   Prob (F-statistic):            0.00419
+Time:                        09:37:34   Log-Likelihood:                -119.45
+No. Observations:                 238   AIC:                             242.9
+Df Residuals:                     236   BIC:                             249.8
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+const               1.7125      0.271      6.313      0.000       1.178       2.247
+ln_total_unfccc     0.0583      0.020      2.892      0.004       0.019       0.098
+==============================================================================
+Omnibus:                       14.974   Durbin-Watson:                   0.443
+Prob(Omnibus):                  0.001   Jarque-Bera (JB):               11.594
+Skew:                          -0.440   Prob(JB):                      0.00304
+Kurtosis:                       2.371   Cond. No.                         141.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+===================================================
+MODEL D: PM2.5 → YLL (GBD) – PANEL
+===================================================
+💾 Saved intermediate dataset → health_d_yll_merge.csv (60750 rows)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            ln_yll_asmr   R-squared:                       0.015
+Model:                            OLS   Adj. R-squared:                  0.015
+Method:                 Least Squares   F-statistic:                     928.9
+Date:                Wed, 12 Nov 2025   Prob (F-statistic):          1.72e-202
+Time:                        09:37:34   Log-Likelihood:            -1.6810e+05
+No. Observations:               60750   AIC:                         3.362e+05
+Df Residuals:                   60748   BIC:                         3.362e+05
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          2.6801      0.069     39.056      0.000       2.546       2.815
+ln_pm25        0.6980      0.023     30.478      0.000       0.653       0.743
+==============================================================================
+Omnibus:                      788.267   Durbin-Watson:                   0.824
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              474.020
+Skew:                           0.012   Prob(JB):                    1.17e-103
+Kurtosis:                       2.568   Cond. No.                         14.6
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+===================================================
+MODEL E: Two‑Way Fixed Effects – UNFCCC → PM2.5
+===================================================
+💾 Saved intermediate dataset → panel_e_fe.csv (238 rows)
+                          PanelOLS Estimation Summary                           
+================================================================================
+Dep. Variable:                ln_pm25   R-squared:                     7.913e-07
+Estimator:                   PanelOLS   R-squared (Between):             -0.0024
+No. Observations:                 238   R-squared (Within):              -0.0002
+Date:                Wed, Nov 12 2025   R-squared (Overall):             -0.0019
+Time:                        09:37:35   Log-likelihood                    185.15
+Cov. Estimator:             Clustered                                           
+                                        F-statistic:                      0.0002
+Entities:                          30   P-value                           0.9901
+Avg Obs:                       7.9333   Distribution:                   F(1,197)
+Min Obs:                       7.0000                                           
+Max Obs:                      10.0000   F-statistic (robust):          5.383e-05
+                                        P-value                           0.9942
+Time periods:                      11   Distribution:                   F(1,197)
+Avg Obs:                       21.636                                           
+Min Obs:                       1.0000                                           
+Max Obs:                       30.000                                           
+                                                                                
+                                Parameter Estimates                                
+===================================================================================
+                 Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+-----------------------------------------------------------------------------------
+const               2.5144     2.8640     0.8779     0.3811     -3.1337      8.1625
+ln_total_unfccc    -0.0016     0.2139    -0.0073     0.9942     -0.4234      0.4202
+===================================================================================
+
+F-test for Poolability: 60.268
+P-value: 0.0000
+Distribution: F(39,197)
+
+Included effects: Entity, Time
+
+===================================================
+MODEL F: Greece Subset (UNFCCC Emissions → PM2.5)
+===================================================
+💾 Saved intermediate dataset → panel_f_greece.csv (7 rows)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                ln_pm25   R-squared:                       0.200
+Model:                            OLS   Adj. R-squared:                  0.040
+Method:                 Least Squares   F-statistic:                     1.253
+Date:                Wed, 12 Nov 2025   Prob (F-statistic):              0.314
+Time:                        09:37:35   Log-Likelihood:                 2.4507
+No. Observations:                   7   AIC:                           -0.9014
+Df Residuals:                       5   BIC:                            -1.010
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+const              14.1056     10.152      1.389      0.223     -11.990      40.201
+ln_total_unfccc    -0.8172      0.730     -1.119      0.314      -2.694       1.060
+==============================================================================
+Omnibus:                          nan   Durbin-Watson:                   2.998
+Prob(Omnibus):                    nan   Jarque-Bera (JB):                2.702
+Skew:                          -1.436   Prob(JB):                        0.259
+Kurtosis:                       4.008   Cond. No.                     1.86e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.86e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+✅ Analysis complete.
+Saved outputs and log → /home/xsrm/repos/kona-v2/output

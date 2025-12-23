@@ -1,16 +1,18 @@
-🚀 Running Extended Environmental–Health Analysis Pipeline...
-Log file: /home/xsrm/repos/kona-v2/output/run_log_20251110_005806.txt
+🚀 Starting Extended Environmental–Health Pipeline (log: output/run_log_20251112_102709.txt)
+
+📊 Loading input datasets...
 
 ===================================================
 MODEL A: EEA Emissions → PM2.5
 ===================================================
+💾 Saved panel_a → 279 rows
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                ln_pm25   R-squared:                       0.002
 Model:                            OLS   Adj. R-squared:                 -0.002
 Method:                 Least Squares   F-statistic:                    0.4583
-Date:                Mon, 10 Nov 2025   Prob (F-statistic):              0.499
-Time:                        00:58:08   Log-Likelihood:                -146.76
+Date:                Wed, 12 Nov 2025   Prob (F-statistic):              0.499
+Time:                        10:27:10   Log-Likelihood:                -146.76
 No. Observations:                 279   AIC:                             297.5
 Df Residuals:                     277   BIC:                             304.8
 Df Model:                           1                                         
@@ -31,29 +33,30 @@ Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 
 ===================================================
-MODEL B: PM2.5 → DALY (EEA)
+MODEL B: PM2.5 → DALY (EEA) – nearest-year ±3
 ===================================================
+💾 Saved health_b → 54 rows
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                ln_daly   R-squared:                       0.335
-Model:                            OLS   Adj. R-squared:                  0.308
-Method:                 Least Squares   F-statistic:                     12.60
-Date:                Mon, 10 Nov 2025   Prob (F-statistic):            0.00156
-Time:                        00:58:08   Log-Likelihood:                -48.671
-No. Observations:                  27   AIC:                             101.3
-Df Residuals:                      25   BIC:                             103.9
+Dep. Variable:                ln_daly   R-squared:                       0.287
+Model:                            OLS   Adj. R-squared:                  0.274
+Method:                 Least Squares   F-statistic:                     20.96
+Date:                Wed, 12 Nov 2025   Prob (F-statistic):           2.95e-05
+Time:                        10:27:11   Log-Likelihood:                -93.598
+No. Observations:                  54   AIC:                             191.2
+Df Residuals:                      52   BIC:                             195.2
 Df Model:                           1                                         
 Covariance Type:            nonrobust                                         
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const          1.0746      1.969      0.546      0.590      -2.980       5.129
-ln_pm25        2.8827      0.812      3.549      0.002       1.210       4.555
+const          2.0245      1.279      1.583      0.119      -0.541       4.590
+ln_pm25        2.3502      0.513      4.578      0.000       1.320       3.380
 ==============================================================================
-Omnibus:                        1.695   Durbin-Watson:                   1.290
-Prob(Omnibus):                  0.429   Jarque-Bera (JB):                1.250
-Skew:                           0.297   Prob(JB):                        0.535
-Kurtosis:                       2.129   Cond. No.                         19.0
+Omnibus:                        2.392   Durbin-Watson:                   0.748
+Prob(Omnibus):                  0.302   Jarque-Bera (JB):                1.873
+Skew:                           0.297   Prob(JB):                        0.392
+Kurtosis:                       2.308   Cond. No.                         19.4
 ==============================================================================
 
 Notes:
@@ -62,13 +65,14 @@ Notes:
 ===================================================
 MODEL C: UNFCCC Emissions → PM2.5
 ===================================================
+💾 Saved panel_c → 238 rows
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                ln_pm25   R-squared:                       0.034
 Model:                            OLS   Adj. R-squared:                  0.030
 Method:                 Least Squares   F-statistic:                     8.364
-Date:                Mon, 10 Nov 2025   Prob (F-statistic):            0.00419
-Time:                        00:58:08   Log-Likelihood:                -119.45
+Date:                Wed, 12 Nov 2025   Prob (F-statistic):            0.00419
+Time:                        10:27:11   Log-Likelihood:                -119.45
 No. Observations:                 238   AIC:                             242.9
 Df Residuals:                     236   BIC:                             249.8
 Df Model:                           1                                         
@@ -91,42 +95,19 @@ Notes:
 ===================================================
 MODEL D: PM2.5 → YLL (GBD)
 ===================================================
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:            ln_yll_asmr   R-squared:                       0.351
-Model:                            OLS   Adj. R-squared:                  0.345
-Method:                 Least Squares   F-statistic:                     50.94
-Date:                Mon, 10 Nov 2025   Prob (F-statistic):           1.97e-10
-Time:                        00:58:09   Log-Likelihood:                -61.845
-No. Observations:                  96   AIC:                             127.7
-Df Residuals:                      94   BIC:                             132.8
-Df Model:                           1                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const          2.9410      0.200     14.711      0.000       2.544       3.338
-ln_pm25        0.4813      0.067      7.137      0.000       0.347       0.615
-==============================================================================
-Omnibus:                        2.940   Durbin-Watson:                   1.956
-Prob(Omnibus):                  0.230   Jarque-Bera (JB):                2.786
-Skew:                           0.414   Prob(JB):                        0.248
-Kurtosis:                       2.900   Cond. No.                         13.8
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+💾 Saved health_d_yll_merge → 0 rows
 
 ===================================================
 MODEL E: Two-Way Fixed Effects – UNFCCC → PM2.5
 ===================================================
+💾 Saved panel_e_fe → 238 rows
                           PanelOLS Estimation Summary                           
 ================================================================================
 Dep. Variable:                ln_pm25   R-squared:                     7.913e-07
 Estimator:                   PanelOLS   R-squared (Between):             -0.0024
 No. Observations:                 238   R-squared (Within):              -0.0002
-Date:                Mon, Nov 10 2025   R-squared (Overall):             -0.0019
-Time:                        00:58:09   Log-likelihood                    185.15
+Date:                Wed, Nov 12 2025   R-squared (Overall):             -0.0019
+Time:                        10:27:11   Log-likelihood                    185.15
 Cov. Estimator:             Clustered                                           
                                         F-statistic:                      0.0002
 Entities:                          30   P-value                           0.9901
@@ -154,15 +135,16 @@ Distribution: F(39,197)
 Included effects: Entity, Time
 
 ===================================================
-MODEL F: Greece Subset (UNFCCC Emissions → PM2.5)
+MODEL F: Greece subset (UNFCCC → PM2.5)
 ===================================================
+💾 Saved panel_f_greece → 7 rows
                             OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                ln_pm25   R-squared:                       0.200
 Model:                            OLS   Adj. R-squared:                  0.040
 Method:                 Least Squares   F-statistic:                     1.253
-Date:                Mon, 10 Nov 2025   Prob (F-statistic):              0.314
-Time:                        00:58:09   Log-Likelihood:                 2.4507
+Date:                Wed, 12 Nov 2025   Prob (F-statistic):              0.314
+Time:                        10:27:11   Log-Likelihood:                 2.4507
 No. Observations:                   7   AIC:                           -0.9014
 Df Residuals:                       5   BIC:                            -1.010
 Df Model:                           1                                         
@@ -185,4 +167,3 @@ Notes:
 strong multicollinearity or other numerical problems.
 
 ✅ Analysis complete.
-Saved outputs and log → /home/xsrm/repos/kona-v2/output
