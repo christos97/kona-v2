@@ -1,0 +1,92 @@
+🚀 Starting Environmental-Health Pipeline
+📋 Models to run: B, C, D
+📊 Log file: output/run_log_20251223_110519.txt
+======================================================================
+
+📂 Loading datasets...
+  ✓ WHO PM2.5: 574 country-year records
+  ✓ EEA Burden (DALY): 56 country-year records
+  ✓ GBD YLL: 1255800 country-year records
+  ✓ UNFCCC Sectoral: 1054 country-year records
+
+======================================================================
+MODEL B: PM₂.₅ → DALY (EEA Health Burden)
+======================================================================
+Nearest-year merge (±3 years) between WHO PM2.5 and EEA DALY data
+✓ Panel B: 54 observations from 27 countries
+💾 Saved panel_b_health.csv
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                ln_daly   R-squared:                       0.287
+Model:                            OLS   Adj. R-squared:                  0.274
+Method:                 Least Squares   F-statistic:                     20.96
+Date:                Tue, 23 Dec 2025   Prob (F-statistic):           2.95e-05
+Time:                        11:05:34   Log-Likelihood:                -93.598
+No. Observations:                  54   AIC:                             191.2
+Df Residuals:                      52   BIC:                             195.2
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          2.0245      1.279      1.583      0.119      -0.541       4.590
+ln_pm25        2.3502      0.513      4.578      0.000       1.320       3.380
+==============================================================================
+Omnibus:                        2.392   Durbin-Watson:                   0.748
+Prob(Omnibus):                  0.302   Jarque-Bera (JB):                1.873
+Skew:                           0.297   Prob(JB):                        0.392
+Kurtosis:                       2.308   Cond. No.                         19.4
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+✓ Model B complete
+
+======================================================================
+MODEL C: Sectoral Emissions → PM₂.₅ (Multivariate Panel FE)
+======================================================================
+Panel regression with country & year fixed effects
+Sectors: Energy, Manufacturing, Transport
+✓ Panel C: 238 observations from 30 countries, 11 years
+💾 Saved panel_c_sectoral.csv
+                          PanelOLS Estimation Summary                           
+================================================================================
+Dep. Variable:                ln_pm25   R-squared:                        0.0306
+Estimator:                   PanelOLS   R-squared (Between):             -0.6258
+No. Observations:                 238   R-squared (Within):               0.1352
+Date:                Tue, Dec 23 2025   R-squared (Overall):             -0.5475
+Time:                        11:05:35   Log-likelihood                    188.85
+Cov. Estimator:             Clustered                                           
+                                        F-statistic:                      2.0545
+Entities:                          30   P-value                           0.1076
+Avg Obs:                       7.9333   Distribution:                   F(3,195)
+Min Obs:                       7.0000                                           
+Max Obs:                      10.0000   F-statistic (robust):             1.4379
+                                        P-value                           0.2330
+Time periods:                      11   Distribution:                   F(3,195)
+Avg Obs:                       21.636                                           
+Min Obs:                       1.0000                                           
+Max Obs:                       30.000                                           
+                                                                                
+                              Parameter Estimates                               
+================================================================================
+              Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+--------------------------------------------------------------------------------
+const            0.1798     1.9314     0.0931     0.9259     -3.6294      3.9889
+ln_energy        0.0833     0.0579     1.4389     0.1518     -0.0309      0.1974
+ln_industry      0.1587     0.1065     1.4900     0.1378     -0.0513      0.3687
+ln_transport     0.0026     0.2045     0.0128     0.9898     -0.4006      0.4059
+================================================================================
+
+F-test for Poolability: 54.086
+P-value: 0.0000
+Distribution: F(39,195)
+
+Included effects: Entity, Time
+❌ Model C failed: Data must be 1-dimensional, got ndarray of shape (238, 1) instead
+
+======================================================================
+MODEL D: PM₂.₅ → YLL (GBD Mortality Burden)
+======================================================================
+Nearest-year merge (±3 years) between WHO PM2.5 and GBD YLL data
+✅ Pipeline finished. Log: output/run_log_20251223_110519.txt

@@ -1,0 +1,66 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "API",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "nx",
+      "runtimeArgs": ["serve", "api", "--inspect"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Storefront",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "nx",
+      "runtimeArgs": ["dev", "storefront"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Monitor",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "nx",
+      "runtimeArgs": ["dev", "monitor"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Emulators",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["emulate"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Webhooks",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "stripe",
+      "runtimeArgs": ["listen", "--forward-to", "http://127.0.0.1:3001/stripe/webhook", "--latest"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "psql",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "docker",
+      "runtimeArgs": [
+        "compose",
+        "exec",
+        "-it",
+        "db",
+        "psql",
+        "postgresql://postgres:postgres@localhost:5432/platform"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
+}

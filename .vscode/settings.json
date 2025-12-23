@@ -1,0 +1,107 @@
+{
+  "[dockercompose]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jade]": {
+    "editor.defaultFormatter": "ducfilan.pug-formatter"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json][jsonc][yaml][markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[md]": {
+    "editor.formatOnSave": false
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "shakram02.bash-beautify"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "angular.enable-strict-mode-prompt": false,
+  "chat.agent.enabled": true,
+  "chat.promptFilesLocations": {
+    ".github/prompts": true
+  },
+  "cSpell.words": [
+    "letswok",
+    "mendake",
+    "fanta",
+    "maki",
+    "panko",
+    "Κάσιους",
+    "κόλιανδρος",
+    "Κοτομπουκιές",
+    "Κρεατικά",
+    "κρουτόν",
+    "ντοματίνια",
+    "πανάρισμα",
+    "παναρισμένες",
+    "πανέ",
+    "Παπαρουνόσπορος",
+    "πίκλα",
+    "σετσουάν",
+    "Σοκολατόπιτα",
+    "τεριγιάκι"
+  ],
+  "editor.codeActionsOnSave": [
+    "source.addMissingImports",
+    "source.fixAll.eslint",
+    "source.fixAll.markdownlint"
+  ],
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.tabSize": 2,
+  "eslint.enable": true,
+  "eslint.validate": ["typescript", "typescriptreact", "json"],
+  "files.watcherExclude": {
+    ".nx": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.next/**": true,
+    "**/coverage/**": true,
+    "**/out/**": true,
+    "**/specs/**": true,
+    "dist": true,
+    "node_modules": true,
+    "pnpm-lock.yaml": true,
+    "tmp": true
+  },
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.localesPaths": ["apps/storefront/configs/messages", "apps/monitor/configs/messages"],
+  "json.schemas": [
+    {
+      "fileMatch": ["*.md"],
+      "url": "file://repos/glitch/markdown-shcema.json"
+    }
+  ],
+  "markdownlint.run": "onSave",
+  "github.copilot.executeCommandsInTerminal": false,
+  "search.exclude": {
+    ".nx": true,
+    "dist": true,
+    "node_modules": true,
+    "pnpm-lock.yaml": true,
+    "tmp": true
+  },
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}

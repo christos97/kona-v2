@@ -1,0 +1,22 @@
+Loading ERA5 data from 2 files in /home/xsrm/repos/kona-v2/data/era5_extracted...
+Traceback (most recent call last):
+  File "/home/xsrm/repos/kona-v2/src/era5_process.py", line 167, in <module>
+    process_era5_to_country_yearly()
+  File "/home/xsrm/repos/kona-v2/src/era5_process.py", line 81, in process_era5_to_country_yearly
+    ds = xr.open_mfdataset(nc_files, combine="by_coords", engine="netcdf4")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xsrm/repos/kona-v2/.venv/lib/python3.12/site-packages/xarray/backends/api.py", line 1634, in open_mfdataset
+    ds = open_(p, **open_kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xsrm/repos/kona-v2/.venv/lib/python3.12/site-packages/xarray/backends/api.py", line 612, in open_dataset
+    ds = _dataset_from_backend_dataset(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xsrm/repos/kona-v2/.venv/lib/python3.12/site-packages/xarray/backends/api.py", line 307, in _dataset_from_backend_dataset
+    ds = _chunk_ds(
+         ^^^^^^^^^^
+  File "/home/xsrm/repos/kona-v2/.venv/lib/python3.12/site-packages/xarray/backends/api.py", line 232, in _chunk_ds
+    chunkmanager = guess_chunkmanager(chunked_array_type)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/xsrm/repos/kona-v2/.venv/lib/python3.12/site-packages/xarray/namedarray/parallelcompat.py", line 116, in guess_chunkmanager
+    raise ImportError(
+ImportError: chunk manager 'dask' is not available. Please make sure 'dask' is installed and importable.

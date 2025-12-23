@@ -1,18 +1,24 @@
-.PHONY: help install run merge analyze regress thesis clean lint format test
+.PHONY: help install run run-all run-modelB run-modelC run-modelD merge analyze regress thesis clean lint format test
 
 help:
-	@echo "📊 Environmental Data Analysis - Available Commands"
+	@echo "📊 Environmental-Health Regression Pipeline"
 	@echo ""
+	@echo "⚙️  SETUP:"
 	@echo "  make install          Install dependencies with Poetry"
-	@echo "  make run              Run the full analysis pipeline"
-	@echo "  make merge            Build the merged dataset only"
-	@echo "  make analyze          Generate exploratory analysis outputs"
-	@echo "  make regress          Execute regression models"
-	@echo "  make thesis           Draft thesis-ready summary artifacts"
-	@echo "  make clean            Remove output and cache files"
-	@echo "  make lint             Check code quality (flake8)"
-	@echo "  make format           Format code (black)"
-	@echo "  make test             Run tests (pytest)"
+	@echo ""
+	@echo "🔬 RUN MODELS:"
+	@echo "  make run              Run all 3 models (B, C, D)"
+	@echo "  make run-modelB       Run only Model B (PM2.5 → DALY)"
+	@echo "  make run-modelC       Run only Model C (Sectoral Emissions → PM2.5)"
+	@echo "  make run-modelD       Run only Model D (PM2.5 → YLL)"
+	@echo ""
+	@echo "🧹 CLEANUP:"
+	@echo "  make clean            Remove output, cache, and logs"
+	@echo "  make clean-output     Remove only output files"
+	@echo ""
+	@echo "📝 CODE QUALITY:"
+	@echo "  make lint             Check code with flake8"
+	@echo "  make format           Format code with black"
 	@echo ""
 
 install:
@@ -20,46 +26,48 @@ install:
 	poetry install --no-root
 	@echo "✓ Dependencies installed"
 
-run:
-	@echo "🚀 Running environmental dataset analysis..."
+run: run-all
+
+run-all:
+	@echo "🚀 Running all 3 models (B, C, D)..."
 	poetry run python run.py
-	@echo "✓ Analysis complete! Check ./output directory"
+	@echo "✓ All models complete! Check ./output directory"
 
-merge:
-	@echo "🧱 Building merged dataset stage..."
-	poetry run python run.py --stage merge
-	@echo "✓ Merge stage complete"
+run-modelB:
+	@echo "🔬 Running Model B: PM₂.₅ → DALY (Health Burden)..."
+	poetry run python run.py --model B
+	@echo "✓ Model B complete! Check ./output/panel_b_health.csv"
 
-analyze:
-	@echo "🔎 Running exploratory analysis stage..."
-	poetry run python run.py --stage analyze
-	@echo "✓ Analyze stage complete"
+run-modelC:
+	@echo "🔬 Running Model C: Sectoral Emissions → PM₂.₅ (Panel FE)..."
+	poetry run python run.py --model C
+	@echo "✓ Model C complete! Check ./output/panel_c_sectoral.csv"
 
-regress:
-	@echo "📐 Executing regression stage..."
-	poetry run python run.py --stage regress
-	@echo "✓ Regress stage complete"
-
-thesis:
-	@echo "📝 Generating thesis synthesis stage..."
-	poetry run python run.py --stage thesis
-	@echo "✓ Thesis stage complete"
+run-modelD:
+	@echo "🔬 Running Model D: PM₂.₅ → YLL (Mortality Burden)..."
+	poetry run python run.py --model D
+	@echo "✓ Model D complete! Check ./output/panel_d_mortality.csv"
 
 clean:
-	@echo "🧹 Cleaning up..."
+	@echo "🧹 Cleaning up output, cache, and logs..."
 	rm -rf output __pycache__ .pytest_cache .mypy_cache
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete
 	@echo "✓ Cleanup complete"
 
+clean-output:
+	@echo "🧹 Cleaning output directory only..."
+	rm -rf output/*.csv output/*.txt output/*.png
+	@echo "✓ Output files removed (keeping logs)"
+
 lint:
 	@echo "🔍 Checking code quality..."
-	poetry run flake8 run.py --max-line-length=100
+	poetry run flake8 run.py src/ --max-line-length=100
 	@echo "✓ Linting complete"
 
 format:
 	@echo "✨ Formatting code with black..."
-	poetry run black run.py --line-length=100
+	poetry run black run.py src/ --line-length=100
 	@echo "✓ Formatting complete"
 
 test:

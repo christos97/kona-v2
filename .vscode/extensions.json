@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "nrwl.angular-console",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "mhutchie.git-graph",
+    "bradlc.vscode-tailwindcss",
+    "GitHub.vscode-github-actions",
+    "ms-azuretools.vscode-docker",
+    "richie5um2.vscode-sort-json",
+    "zengxingxin.sort-js-object-keys",
+    "zhihaocui.ts-interface-sorter"
+  ]
+}
