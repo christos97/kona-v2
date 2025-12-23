@@ -1,0 +1,17 @@
+Model J Diagnostics: ModelJ_PM25_DALY
+========================================
+
+Sample size: N = 54
+Centering mean (ln PM₂.₅): 2.4628
+Centering mean (PM₂.₅): 11.74 μg/m³
+
+Coefficient on z (linear): 2.099557
+Coefficient on z² (quadratic): -1.107563
+
+Curvature: concave (diminishing marginal harm)
+
+Implied turning point: 30.3 μg/m³
+
+NOTE: The implied turning point is reported as a descriptive quantity
+derived from point estimates and should not be interpreted as a
+precisely identified threshold. No confidence interval is computed.

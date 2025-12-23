@@ -1,0 +1,9 @@
+🚀 Starting Environmental-Health Pipeline
+📋 Models to run: B, C, D, G, E, J
+📊 Log file: output/run_log_20251223_133709.txt
+======================================================================
+
+📂 Loading datasets...
+  ✓ WHO PM2.5: 574 country-year records
+  ✓ EEA Burden (DALY): 56 country-year records
+✅ Pipeline finished. Log: output/run_log_20251223_133709.txt

@@ -1,10 +1,10 @@
                           PanelOLS Estimation Summary                           
 ================================================================================
 Dep. Variable:                ln_pm25   R-squared:                        0.0306
-Estimator:                   PanelOLS   R-squared (Between):             -0.6258
+Estimator:                   PanelOLS   R-squared (Between):              0.9578
 No. Observations:                 238   R-squared (Within):               0.1352
-Date:                Tue, Dec 23 2025   R-squared (Overall):             -0.5475
-Time:                        12:25:09   Log-likelihood                    188.85
+Date:                Tue, Dec 23 2025   R-squared (Overall):              0.9548
+Time:                        13:38:22   Log-likelihood                    188.85
 Cov. Estimator:             Clustered                                           
                                         F-statistic:                      2.0545
 Entities:                          30   P-value                           0.1076
@@ -21,7 +21,6 @@ Max Obs:                       30.000
 ================================================================================
               Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
 --------------------------------------------------------------------------------
-const            0.1798     1.9314     0.0931     0.9259     -3.6294      3.9889
 ln_energy        0.0833     0.0579     1.4389     0.1518     -0.0309      0.1974
 ln_industry      0.1587     0.1065     1.4900     0.1378     -0.0513      0.3687
 ln_transport     0.0026     0.2045     0.0128     0.9898     -0.4006      0.4059

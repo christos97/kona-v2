@@ -1,0 +1,378 @@
+🚀 Starting Environmental-Health Pipeline
+📋 Models to run: B, C, D, G, E, J
+📊 Log file: output/run_log_20251223_130552.txt
+======================================================================
+
+📋 Running panel balance audit...
+============================================================
+PANEL BALANCE AUDIT
+============================================================
+
+📊 Model C (Sectoral Emissions → PM₂.₅)
+   Total observations: 238
+   Countries: 30
+   Years: 2010 - 2020
+   Obs per country: median=8, min=7, max=10
+
+📊 Model B (PM₂.₅ → DALY)
+   Observations: 54
+   Structure: Cross-sectional (nearest-year merge ±3)
+
+📊 Model D (PM₂.₅ → YLL)
+   Observations: 438
+   Structure: Cross-sectional (nearest-year merge ±3)
+
+============================================================
+
+📂 Loading datasets...
+  ✓ WHO PM2.5: 574 country-year records
+  ✓ EEA Burden (DALY): 56 country-year records
+  ✓ GBD YLL: 1255800 country-year records
+  ✓ UNFCCC Sectoral: 1054 country-year records
+
+======================================================================
+MODEL B: PM₂.₅ → DALY (EEA Health Burden)
+======================================================================
+Nearest-year merge (±3 years) between WHO PM2.5 and EEA DALY data
+✓ Panel B: 54 observations from 27 countries
+💾 Saved panel_b_health.csv
+💾 Saved panel_model_b_estimation.csv (N=54)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                ln_daly   R-squared:                       0.287
+Model:                            OLS   Adj. R-squared:                  0.274
+Method:                 Least Squares   F-statistic:                     20.96
+Date:                Tue, 23 Dec 2025   Prob (F-statistic):           2.95e-05
+Time:                        13:06:07   Log-Likelihood:                -93.598
+No. Observations:                  54   AIC:                             191.2
+Df Residuals:                      52   BIC:                             195.2
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          2.0245      1.279      1.583      0.119      -0.541       4.590
+ln_pm25        2.3502      0.513      4.578      0.000       1.320       3.380
+==============================================================================
+Omnibus:                        2.392   Durbin-Watson:                   0.748
+Prob(Omnibus):                  0.302   Jarque-Bera (JB):                1.873
+Skew:                           0.297   Prob(JB):                        0.392
+Kurtosis:                       2.308   Cond. No.                         19.4
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+✓ Model B complete
+
+======================================================================
+MODEL C: Sectoral Emissions → PM₂.₅ (Multivariate Panel FE)
+======================================================================
+Panel regression with country & year fixed effects
+Sectors: Energy, Manufacturing, Transport
+✓ Panel C: 238 observations from 30 countries, 11 years
+💾 Saved panel_c_sectoral.csv
+💾 Saved panel_model_c_estimation.csv (N=238, countries=30, years=11)
+                          PanelOLS Estimation Summary                           
+================================================================================
+Dep. Variable:                ln_pm25   R-squared:                        0.0306
+Estimator:                   PanelOLS   R-squared (Between):              0.9578
+No. Observations:                 238   R-squared (Within):               0.1352
+Date:                Tue, Dec 23 2025   R-squared (Overall):              0.9548
+Time:                        13:06:08   Log-likelihood                    188.85
+Cov. Estimator:             Clustered                                           
+                                        F-statistic:                      2.0545
+Entities:                          30   P-value                           0.1076
+Avg Obs:                       7.9333   Distribution:                   F(3,195)
+Min Obs:                       7.0000                                           
+Max Obs:                      10.0000   F-statistic (robust):             1.4379
+                                        P-value                           0.2330
+Time periods:                      11   Distribution:                   F(3,195)
+Avg Obs:                       21.636                                           
+Min Obs:                       1.0000                                           
+Max Obs:                       30.000                                           
+                                                                                
+                              Parameter Estimates                               
+================================================================================
+              Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+--------------------------------------------------------------------------------
+ln_energy        0.0833     0.0579     1.4389     0.1518     -0.0309      0.1974
+ln_industry      0.1587     0.1065     1.4900     0.1378     -0.0513      0.3687
+ln_transport     0.0026     0.2045     0.0128     0.9898     -0.4006      0.4059
+================================================================================
+
+F-test for Poolability: 54.086
+P-value: 0.0000
+Distribution: F(39,195)
+
+Included effects: Entity, Time
+✓ Model C complete
+
+======================================================================
+MODEL D: PM₂.₅ → YLL (GBD Mortality Burden)
+======================================================================
+Nearest-year merge (±3 years) between WHO PM2.5 and GBD YLL data
+✓ Panel D: 438 observations from 101 countries
+💾 Saved panel_d_mortality.csv
+💾 Saved panel_model_d_estimation.csv (N=438)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 ln_yll   R-squared:                       0.102
+Model:                            OLS   Adj. R-squared:                  0.100
+Method:                 Least Squares   F-statistic:                     49.58
+Date:                Tue, 23 Dec 2025   Prob (F-statistic):           7.45e-12
+Time:                        13:06:40   Log-Likelihood:                -781.73
+No. Observations:                 438   AIC:                             1567.
+Df Residuals:                     436   BIC:                             1576.
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const         -2.3802      0.300     -7.940      0.000      -2.969      -1.791
+ln_pm25        0.6947      0.099      7.041      0.000       0.501       0.889
+==============================================================================
+Omnibus:                        6.073   Durbin-Watson:                   0.835
+Prob(Omnibus):                  0.048   Jarque-Bera (JB):                5.334
+Skew:                           0.200   Prob(JB):                       0.0694
+Kurtosis:                       2.636   Cond. No.                         14.6
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+✓ Model D complete
+
+======================================================================
+MODEL G: Total Emissions → PM₂.₅ (Panel FE)
+======================================================================
+Aggregated emissions to address sectoral multicollinearity
+💾 Saved panel_model_g_estimation.csv (N=238, countries=30, years=11)
+
+============================================================
+MODEL G: Total Emissions → PM₂.₅ (Panel FE)
+============================================================
+Specification: ln(PM₂.₅)_it = β·ln(TotalEmissions)_it + α_i + γ_t + ε_it
+Construction: raw emissions summation
+
+Sample: N = 238 observations
+        30 countries, 11 years
+                          PanelOLS Estimation Summary                           
+================================================================================
+Dep. Variable:                ln_pm25   R-squared:                        0.0008
+Estimator:                   PanelOLS   R-squared (Between):             -0.4320
+No. Observations:                 238   R-squared (Within):              -0.0180
+Date:                Tue, Dec 23 2025   R-squared (Overall):             -0.4321
+Time:                        13:06:40   Log-likelihood                    185.24
+Cov. Estimator:             Clustered                                           
+                                        F-statistic:                      0.1518
+Entities:                          30   P-value                           0.6972
+Avg Obs:                       7.9333   Distribution:                   F(1,197)
+Min Obs:                       7.0000                                           
+Max Obs:                      10.0000   F-statistic (robust):             0.0619
+                                        P-value                           0.8038
+Time periods:                      11   Distribution:                   F(1,197)
+Avg Obs:                       21.636                                           
+Min Obs:                       1.0000                                           
+Max Obs:                       30.000                                           
+                                                                                
+                                 Parameter Estimates                                  
+======================================================================================
+                    Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+--------------------------------------------------------------------------------------
+ln_total_emissions    -0.0450     0.1810    -0.2488     0.8038     -0.4020      0.3120
+======================================================================================
+
+F-test for Poolability: 59.325
+P-value: 0.0000
+Distribution: F(39,197)
+
+Included effects: Entity, Time
+✓ Model G complete
+
+======================================================================
+MODEL E-LITE: Lagged Total Emissions → PM₂.₅ (Panel FE)
+======================================================================
+Tests temporal precedence with 1-year lag
+GATED: Only runs if panel quality criteria are met
+
+============================================================
+MODEL E-LITE GATE CHECK
+============================================================
+
+Baseline panel:
+  Observations: N = 238
+  Countries: 30
+  Median obs per country: 8
+
+After lagging (t-1):
+  Observations retained: 208
+  Countries retained: 30
+  Median obs per country: 7
+  Sample loss: 12.6%
+
+Gate criteria:
+  Median obs ≥ 3: PASS
+  Sample loss ≤ 30%: PASS
+  Countries retained ≥ 67%: PASS
+
+Decision:
+→ Model E-lite ESTIMATED
+============================================================
+💾 Saved gate diagnostics to /home/xsrm/repos/kona-v2/output/ModelE_gate_check.txt
+💾 Saved panel_model_e_estimation.csv (N=208, countries=30, years=10)
+
+============================================================
+MODEL E-LITE: Lagged Total Emissions → PM₂.₅ (Panel FE)
+============================================================
+Specification: ln(PM₂.₅)_it = β·ln(TotalEmissions)_{i,t-1} + α_i + γ_t + ε_it
+
+Sample retention:
+  Before lagging: 238 obs, 30 countries
+  After lagging:  208 obs, 30 countries
+  Sample loss: 12.6%
+
+Final sample: N = 208 observations
+              30 countries, 10 years
+                          PanelOLS Estimation Summary                           
+================================================================================
+Dep. Variable:                ln_pm25   R-squared:                        0.0066
+Estimator:                   PanelOLS   R-squared (Between):             -1.5637
+No. Observations:                 208   R-squared (Within):              -0.0306
+Date:                Tue, Dec 23 2025   R-squared (Overall):             -1.5673
+Time:                        13:06:40   Log-likelihood                    166.98
+Cov. Estimator:             Clustered                                           
+                                        F-statistic:                      1.1158
+Entities:                          30   P-value                           0.2923
+Avg Obs:                       6.9333   Distribution:                   F(1,168)
+Min Obs:                       6.0000                                           
+Max Obs:                       9.0000   F-statistic (robust):             0.8276
+                                        P-value                           0.3643
+Time periods:                      10   Distribution:                   F(1,168)
+Avg Obs:                       20.800                                           
+Min Obs:                       1.0000                                           
+Max Obs:                       30.000                                           
+                                                                                
+                                    Parameter Estimates                                    
+===========================================================================================
+                         Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+-------------------------------------------------------------------------------------------
+ln_total_emissions_lag1    -0.1354     0.1489    -0.9097     0.3643     -0.4293      0.1585
+===========================================================================================
+
+F-test for Poolability: 52.924
+P-value: 0.0000
+Distribution: F(38,168)
+
+Included effects: Entity, Time
+✓ Model E-lite complete
+
+======================================================================
+MODEL J: Quadratic PM₂.₅ → Health (OLS)
+======================================================================
+Tests nonlinear dose-response relationship
+Centered specification: z = ln(PM₂.₅) - mean(ln(PM₂.₅))
+
+--- Model J: PM₂.₅ → DALY (Quadratic) ---
+💾 Saved panel_model_j_daly_estimation.csv (N=54)
+
+============================================================
+MODEL J: Quadratic PM₂.₅ → DALY
+============================================================
+Specification: ln_daly = β₀ + β₁·z + β₂·z² + ε
+where z = ln(PM₂.₅) - 2.4628
+
+Observations: N = 54
+Centering mean (ln PM₂.₅): 2.4628 (11.74 μg/m³)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                ln_daly   R-squared:                       0.300
+Model:                            OLS   Adj. R-squared:                  0.272
+Method:                 Least Squares   F-statistic:                     10.90
+Date:                Tue, 23 Dec 2025   Prob (F-statistic):           0.000114
+Time:                        13:06:41   Log-Likelihood:                -93.130
+No. Observations:                  54   AIC:                             192.3
+Df Residuals:                      51   BIC:                             198.2
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          7.9643      0.249     32.013      0.000       7.465       8.464
+z              2.0996      0.578      3.630      0.001       0.938       3.261
+z_sq          -1.1076      1.173     -0.944      0.349      -3.462       1.247
+==============================================================================
+Omnibus:                        2.252   Durbin-Watson:                   0.698
+Prob(Omnibus):                  0.324   Jarque-Bera (JB):                1.547
+Skew:                           0.184   Prob(JB):                        0.461
+Kurtosis:                       2.257   Cond. No.                         6.48
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+Curvature interpretation: concave (diminishing marginal harm)
+Implied turning point: 30.3 μg/m³ (descriptive)
+NOTE: Turning point is a descriptive quantity derived from point estimates
+      and should not be interpreted as a precisely identified threshold.
+✓ Model J (DALY) complete
+
+--- Model J: PM₂.₅ → YLL (Quadratic) ---
+💾 Saved panel_model_j_yll_estimation.csv (N=438)
+
+============================================================
+MODEL J: Quadratic PM₂.₅ → YLL
+============================================================
+Specification: ln_yll = β₀ + β₁·z + β₂·z² + ε
+where z = ln(PM₂.₅) - 2.9570
+
+Observations: N = 438
+Centering mean (ln PM₂.₅): 2.9570 (19.24 μg/m³)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 ln_yll   R-squared:                       0.105
+Model:                            OLS   Adj. R-squared:                  0.101
+Method:                 Least Squares   F-statistic:                     25.61
+Date:                Tue, 23 Dec 2025   Prob (F-statistic):           3.05e-11
+Time:                        13:06:41   Log-Likelihood:                -780.94
+No. Observations:                 438   AIC:                             1568.
+Df Residuals:                     435   BIC:                             1580.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const         -0.3923      0.087     -4.519      0.000      -0.563      -0.222
+z              0.6680      0.101      6.624      0.000       0.470       0.866
+z_sq           0.1351      0.108      1.257      0.210      -0.076       0.346
+==============================================================================
+Omnibus:                        6.611   Durbin-Watson:                   0.833
+Prob(Omnibus):                  0.037   Jarque-Bera (JB):                5.761
+Skew:                           0.209   Prob(JB):                       0.0561
+Kurtosis:                       2.625   Cond. No.                         2.17
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+Curvature interpretation: convex (accelerating harm)
+✓ Model J (YLL) complete
+
+======================================================================
+SUMMARY
+======================================================================
+
+✅ Results saved to: output/summary_all_models.csv
+
+                              Model        R2    Adj_R2    N  Coef_ln_pm25     P_ln_pm25  R2_within  R2_between  R2_overall  Coef_ln_energy  P_ln_energy  Coef_ln_industry  P_ln_industry  Coef_ln_transport  P_ln_transport  Coef_ln_total_emissions  P_ln_total_emissions  Coef_ln_total_emissions_lag1  P_ln_total_emissions_lag1    Coef_z           P_z  Coef_z_sq    P_z_sq
+0                  ModelB_PM25_DALY  0.287276  0.273570   54      2.350237  2.954880e-05        NaN         NaN         NaN             NaN          NaN               NaN            NaN                NaN             NaN                      NaN                   NaN                           NaN                        NaN       NaN           NaN        NaN       NaN
+1              ModelC_Sectoral_PM25       NaN       NaN  238           NaN           NaN   0.135212    0.957818    0.954829        0.083288     0.151785          0.158677       0.137834           0.002625        0.989771                      NaN                   NaN                           NaN                        NaN       NaN           NaN        NaN       NaN
+2                   ModelD_PM25_YLL  0.102104  0.100045  438      0.694666  7.453178e-12        NaN         NaN         NaN             NaN          NaN               NaN            NaN                NaN             NaN                      NaN                   NaN                           NaN                        NaN       NaN           NaN        NaN       NaN
+3        ModelG_TotalEmissions_PM25       NaN       NaN  238           NaN           NaN  -0.017973   -0.431973   -0.432113             NaN          NaN               NaN            NaN                NaN             NaN                -0.045036              0.803786                           NaN                        NaN       NaN           NaN        NaN       NaN
+4  ModelE_LaggedTotalEmissions_PM25       NaN       NaN  208           NaN           NaN  -0.030627   -1.563691   -1.567279             NaN          NaN               NaN            NaN                NaN             NaN                      NaN                   NaN                     -0.135427                   0.364279       NaN           NaN        NaN       NaN
+5                  ModelJ_PM25_DALY  0.299524  0.272055   54           NaN           NaN        NaN         NaN         NaN             NaN          NaN               NaN            NaN                NaN             NaN                      NaN                   NaN                           NaN                        NaN  2.099557  6.566819e-04  -1.107563  0.349447
+6                   ModelJ_PM25_YLL  0.105352  0.101238  438           NaN           NaN        NaN         NaN         NaN             NaN          NaN               NaN            NaN                NaN             NaN                      NaN                   NaN                           NaN                        NaN  0.668035  1.031295e-10   0.135117  0.209590
+
+📊 All outputs saved to: output
+📝 Log saved to: output/run_log_20251223_130552.txt
+💾 Panel materialization log: output/panel_materialization_log.txt
+======================================================================
+✅ Pipeline finished. Log: output/run_log_20251223_130552.txt

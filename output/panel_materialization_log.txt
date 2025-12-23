@@ -1,0 +1,7 @@
+[2025-12-23 13:38:21] Model B: panel_model_b_estimation.csv (N=54, countries=27)
+[2025-12-23 13:38:22] Model C: panel_model_c_estimation.csv (N=238, countries=30, years=11)
+[2025-12-23 13:38:55] Model D: panel_model_d_estimation.csv (N=438, countries=101)
+[2025-12-23 13:38:55] Model G: panel_model_g_estimation.csv (N=238, countries=30, years=11)
+[2025-12-23 13:38:56] Model E: panel_model_e_estimation.csv (N=208, countries=30, years=10)
+[2025-12-23 13:38:56] Model J (ln_daly): panel_model_j_daly_estimation.csv (N=54, countries=27)
+[2025-12-23 13:38:56] Model J (ln_yll): panel_model_j_yll_estimation.csv (N=438, countries=101)

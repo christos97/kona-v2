@@ -1,0 +1,80 @@
+🚀 Starting Environmental-Health Pipeline
+📋 Models to run: B
+📊 Log file: output/run_log_20251223_133713.txt
+======================================================================
+
+📂 Loading datasets...
+  ✓ WHO PM2.5: 574 country-year records
+  ✓ EEA Burden (DALY): 56 country-year records
+  ✓ GBD YLL: 1255800 country-year records
+  ✓ UNFCCC Sectoral: 1054 country-year records
+
+======================================================================
+MODEL B: PM₂.₅ → DALY (EEA Health Burden)
+======================================================================
+Nearest-year merge (±3 years) between WHO PM2.5 and EEA DALY data
+✓ Panel B: 54 observations from 27 countries
+💾 Saved panel_b_health.csv
+💾 Saved panel_model_b_estimation.csv (N=54)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                ln_daly   R-squared:                       0.287
+Model:                            OLS   Adj. R-squared:                  0.274
+Method:                 Least Squares   F-statistic:                     20.96
+Date:                Tue, 23 Dec 2025   Prob (F-statistic):           2.95e-05
+Time:                        13:37:28   Log-Likelihood:                -93.598
+No. Observations:                  54   AIC:                             191.2
+Df Residuals:                      52   BIC:                             195.2
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          2.0245      1.279      1.583      0.119      -0.541       4.590
+ln_pm25        2.3502      0.513      4.578      0.000       1.320       3.380
+==============================================================================
+Omnibus:                        2.392   Durbin-Watson:                   0.748
+Prob(Omnibus):                  0.302   Jarque-Bera (JB):                1.873
+Skew:                           0.297   Prob(JB):                        0.392
+Kurtosis:                       2.308   Cond. No.                         19.4
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+✓ Model B complete
+
+======================================================================
+SUMMARY
+======================================================================
+
+✅ Results saved to: output/summary_all_models.csv
+
+              Model        R2   Adj_R2   N  Coef_ln_pm25  P_ln_pm25
+0  ModelB_PM25_DALY  0.287276  0.27357  54      2.350237    0.00003
+
+📊 All outputs saved to: output
+📝 Log saved to: output/run_log_20251223_133713.txt
+💾 Panel materialization log: output/panel_materialization_log.txt
+======================================================================
+
+📋 Post-execution panel verification...
+============================================================
+PANEL VERIFICATION (from saved outputs)
+============================================================
+
+📊 Model C (Sectoral Emissions → PM₂.₅)
+   Total observations: 238
+   Countries: 30
+   Years: 2010 - 2020
+   Obs per country: median=8, min=7, max=10
+
+📊 Model B (PM₂.₅ → DALY)
+   Observations: 54
+   Structure: Cross-sectional (nearest-year merge ±3)
+
+📊 Model D (PM₂.₅ → YLL)
+   Observations: 438
+   Structure: Cross-sectional (nearest-year merge ±3)
+
+============================================================
+✅ Pipeline finished. Log: output/run_log_20251223_133713.txt

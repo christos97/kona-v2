@@ -1,0 +1,23 @@
+Model E-lite Gate Diagnostics
+========================================
+
+Source panel: output/panel_c_sectoral.csv
+
+Baseline panel:
+- Observations: N = 238
+- Countries: 30
+- Median obs per country: 8
+
+After lagging (t-1):
+- Observations retained: 208
+- Countries retained: 30
+- Median obs per country: 7
+- Sample loss: 12.6%
+
+Gate criteria:
+- Median obs ≥ 3: PASS
+- Sample loss ≤ 30%: PASS
+- Countries retained ≥ 2/3 baseline: PASS
+
+Decision:
+→ Model E-lite ESTIMATED

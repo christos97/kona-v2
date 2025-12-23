@@ -29,7 +29,6 @@ install:
 run: run-all
 
 run-all:
-	@echo "🚀 Running all 3 models (B, C, D)..."
 	poetry run python run.py
 	@echo "✓ All models complete! Check ./output directory"
 

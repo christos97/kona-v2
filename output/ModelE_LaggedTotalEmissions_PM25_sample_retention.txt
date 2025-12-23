@@ -1,0 +1,10 @@
+Model E-lite Sample Retention: ModelE_LaggedTotalEmissions_PM25
+========================================
+
+Lagging drops the first observation per country.
+
+Before lagging: 238 observations, 30 countries
+After lagging:  208 observations, 30 countries
+
+Sample loss: 12.6%
+Country retention: 100.0%

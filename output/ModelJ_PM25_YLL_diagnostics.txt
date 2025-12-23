@@ -1,0 +1,13 @@
+Model J Diagnostics: ModelJ_PM25_YLL
+========================================
+
+Sample size: N = 438
+Centering mean (ln PM₂.₅): 2.9570
+Centering mean (PM₂.₅): 19.24 μg/m³
+
+Coefficient on z (linear): 0.668035
+Coefficient on z² (quadratic): 0.135117
+
+Curvature: convex (accelerating harm)
+
+Turning point: Not applicable (curvature is not concave)

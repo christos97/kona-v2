@@ -4,7 +4,7 @@ Dep. Variable:                ln_daly   R-squared:                       0.287
 Model:                            OLS   Adj. R-squared:                  0.274
 Method:                 Least Squares   F-statistic:                     20.96
 Date:                Tue, 23 Dec 2025   Prob (F-statistic):           2.95e-05
-Time:                        12:25:08   Log-Likelihood:                -93.598
+Time:                        13:38:21   Log-Likelihood:                -93.598
 No. Observations:                  54   AIC:                             191.2
 Df Residuals:                      52   BIC:                             195.2
 Df Model:                           1                                         

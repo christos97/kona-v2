@@ -1,0 +1,26 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                ln_daly   R-squared:                       0.300
+Model:                            OLS   Adj. R-squared:                  0.272
+Method:                 Least Squares   F-statistic:                     10.90
+Date:                Tue, 23 Dec 2025   Prob (F-statistic):           0.000114
+Time:                        13:38:56   Log-Likelihood:                -93.130
+No. Observations:                  54   AIC:                             192.3
+Df Residuals:                      51   BIC:                             198.2
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          7.9643      0.249     32.013      0.000       7.465       8.464
+z              2.0996      0.578      3.630      0.001       0.938       3.261
+z_sq          -1.1076      1.173     -0.944      0.349      -3.462       1.247
+==============================================================================
+Omnibus:                        2.252   Durbin-Watson:                   0.698
+Prob(Omnibus):                  0.324   Jarque-Bera (JB):                1.547
+Skew:                           0.184   Prob(JB):                        0.461
+Kurtosis:                       2.257   Cond. No.                         6.48
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
